@@ -1,0 +1,7 @@
+{
+    "buildings": {
+        "_id": "DEMO", 
+        "name": "This is the Demo building",
+        "description": "This building is made up for Demo purposes"
+    }
+}

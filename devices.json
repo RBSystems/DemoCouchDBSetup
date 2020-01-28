@@ -1,0 +1,133 @@
+{
+    "pi3": {
+        "_id": "DEMO-123-CP1",
+        "name": "CP1",
+        "address": "DEMO-123-CP1.youruniversity.edu", 
+        "description": "DEMO-123",
+        "display_name": "DEMO-123",
+        "type": {
+          "_id": "Pi3"
+        },
+        "roles": [
+          {
+            "_id": "ControlProcessor",
+            "description": "ControlProcessor"
+          },
+          {
+            "_id": "EventRouter",
+            "description": "EventRouter"
+          },
+          {
+            "_id": "Touchpanel",
+            "description": "Touchpanel"
+          }
+        ],
+        "ports": []
+    },
+    "sonyXBR": {
+        "_id": "DEMO-123-D1",
+        "name": "D1",
+        "address": "255.255.255.255", 
+        "description": "Display 1",
+        "display_name": "Display 1",
+        "type": {
+          "_id": "SonyXBR"
+        },
+        "roles": [
+          {
+            "_id": "AudioOut",
+            "description": "AudioOut"
+          },
+          {
+            "_id": "VideoOut",
+            "description": "VideoOut"
+          }
+        ],
+        "ports": [
+          {
+            "_id": "hdmi!2",
+            "friendly_name": "SonyTv HDMI input 2",
+            "source_device": "DEMO-123-HDMI1",
+            "destination_device": "DEMO-123-D1",
+            "description": "SonyTv HDMI input 2"
+          },
+          {
+            "_id": "hdmi!3",
+            "friendly_name": "SonyTv HDMI input 3",
+            "source_device": "DEMO-123-HDMI2",
+            "destination_device": "DEMO-123-D1",
+            "description": "SonyTv HDMI input 3"
+          },
+          {
+            "_id": "hdmi!4",
+            "friendly_name": "SonyTv HDMI input 4",
+            "source_device": "DEMO-123-HDMI3",
+            "destination_device": "DEMO-123-D1",
+            "description": "SonyTv HDMI input 4"
+          }
+        ]
+      },
+    "HDMI1": {
+        "_id": "DEMO-123-HDMI1",
+        "name": "HDMI1",
+        "address": "0.0.0.0",
+        "description": "HDMI",
+        "display_name": "HDMI",
+        "type": {
+          "_id": "non-controllable"
+        },
+        "roles": [
+          {
+            "_id": "AudioIn",
+            "description": "AudioIn"
+          },
+          {
+            "_id": "VideoIn",
+            "description": "VideoIn"
+          }
+        ],
+        "ports": []
+    },
+    "HDMI2": {
+        "_id": "DEMO-123-HDMI2",
+        "name": "HDMI2",
+        "address": "0.0.0.0",
+        "description": "HDMI",
+        "display_name": "HDMI",
+        "type": {
+          "_id": "non-controllable"
+        },
+        "roles": [
+          {
+            "_id": "AudioIn",
+            "description": "AudioIn"
+          },
+          {
+            "_id": "VideoIn",
+            "description": "VideoIn"
+          }
+        ],
+        "ports": []
+    },
+    "HDMI3": {
+        "_id": "DEMO-123-HDMI3",
+        "name": "HDMI3",
+        "address": "0.0.0.0",
+        "description": "HDMI",
+        "display_name": "HDMI",
+        "type": {
+          "_id": "non-controllable"
+        },
+        "roles": [
+          {
+            "_id": "AudioIn",
+            "description": "AudioIn"
+          },
+          {
+            "_id": "VideoIn",
+            "description": "VideoIn"
+          }
+        ],
+        "ports": []
+    }
+}

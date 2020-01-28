@@ -1,0 +1,14 @@
+{
+    "room": {
+        "_id": "DEMO-123", 
+        "name": "DEMO-123", 
+        "description": "DEMO-123", 
+        "configuration": {
+          "_id": "Default"
+        },
+        "designation": "stage",
+        "attributes": {
+          "Ceiling Box": true
+        }
+    }
+}

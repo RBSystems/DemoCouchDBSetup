@@ -1,0 +1,366 @@
+{
+    "pi3": {
+        "_id": "Pi3",
+        "description": "A Raspberry Pi 3",
+        "display_name": "Pi",
+        "roles": [
+          {
+            "_id": "ControlProcessor",
+            "description": "Acts as a device to control the AV-API in a room"
+          },
+          {
+            "_id": "Touchpanel",
+            "description": "A device with a touchscreen interface"
+          },
+          {
+            "_id": "EventRouter",
+            "description": "Acts as a device that routes events through the room to other devices"
+          }
+        ],
+        "commands": [
+          {
+            "_id": "GenericPassthroughADCP",
+            "description": "GenericPassthroughADCP",
+            "microservice": {
+              "_id": "generic-gateway-Adcp",
+              "description": "used to serialize requests to and ADCP device",
+              "address": "http://:gateway:8012"
+            },
+            "endpoint": {
+              "_id": "Generic Gateway",
+              "description": "A generic Gateway for use in base case where microservice exists outside of the pi issuing the requests.",
+              "path": "/:path"
+            },
+            "priority": 1
+          }
+        ]
+    },
+    "sonyXBR": {
+        "_id": "SonyXBR",
+        "description": "Sony XBR TV.",
+        "display_name": "Sony XBR TV",
+        "output": true,
+        "destination": true,
+        "roles": [
+          {
+            "_id": "AudioOut",
+            "description": "Acts as an audio output device"
+          },
+          {
+            "_id": "VideoOut",
+            "description": "Acts as a video output device"
+          }
+        ],
+        "power_states": [
+          {
+            "_id": "On",
+            "description": "On",
+            "tags": []
+          },
+          {
+            "_id": "Standby",
+            "description": "Standby",
+            "tags": []
+          }
+        ],
+        "ports": [
+          {
+            "_id": "hdmi!1",
+            "friendly_name": "HDMI 1",
+            "description": "SonyTV HDMI input 1",
+            "tags": [
+              "port-in",
+              "video"
+            ]
+          },
+          {
+            "_id": "hdmi!2",
+            "friendly_name": "HDMI 2",
+            "description": "SonyTV HDMI input 2",
+            "tags": [
+              "port-in",
+              "video"
+            ]
+          },
+          {
+            "_id": "hdmi!3",
+            "friendly_name": "HDMI 3",
+            "description": "SonyTV HDMI input 3",
+            "tags": [
+              "port-in",
+              "video"
+            ]
+          },
+          {
+            "_id": "hdmi!4",
+            "friendly_name": "HDMI 4",
+            "description": "SonyTV HDMI input 4",
+            "tags": [
+              "port-in",
+              "video"
+            ]
+          }
+        ],
+        "commands": [
+          {
+            "_id": "Standby",
+            "description": "Standby",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "Standby",
+              "description": "Standard standby endpoint.",
+              "path": "/:address/power/standby"
+            },
+            "priority": 100
+          },
+          {
+            "_id": "PowerOn",
+            "description": "PowerOn",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "PowerOn",
+              "description": "Standard PowerOn endpoint.",
+              "path": "/:address/power/on"
+            },
+            "priority": 1
+          },
+          {
+            "_id": "STATUS_Power",
+            "description": "STATUS_Power",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "StatusPower",
+              "description": "Standard power state endpoint",
+              "path": "/:address/power/status"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "STATUS_Volume",
+            "description": "STATUS_Volume",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "StatusVolume",
+              "description": "Standard volume state endpoint",
+              "path": "/:address/volume/level"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "STATUS_Muted",
+            "description": "STATUS_Muted",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "StatusMute",
+              "description": "Standard mute state endpoint",
+              "path": "/:address/volume/mute/status"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "STATUS_Blanked",
+            "description": "STATUS_Blanked",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "StatusBlank",
+              "description": "Standard display status endpoint",
+              "path": "/:address/display/status"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "ChangeInput",
+            "description": "ChangeInput",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "ChangeInput",
+              "description": "Standard ChangeInput endpoint.",
+              "path": "/:address/input/:port"
+            },
+            "priority": 10
+          },
+          {
+            "_id": "SetVolume",
+            "description": "SetVolume",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "SetVolume",
+              "description": "Standart SetVolume endpoint",
+              "path": "/:address/volume/set/:level"
+            },
+            "priority": 10
+          },
+          {
+            "_id": "BlankDisplay",
+            "description": "BlankDisplay",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "BlankScreen",
+              "description": "Standard BlankScreen endpoint.",
+              "path": "/:address/display/blank"
+            },
+            "priority": 10
+          },
+          {
+            "_id": "UnblankDisplay",
+            "description": "UnblankDisplay",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "UnblankScreen",
+              "description": "Standard UnblankScreen endpoint.",
+              "path": "/:address/display/unblank"
+            },
+            "priority": 7
+          },
+          {
+            "_id": "Mute",
+            "description": "Mute",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "Mute",
+              "description": "Standard Mute endpoint",
+              "path": "/:address/volume/mute"
+            },
+            "priority": 10
+          },
+          {
+            "_id": "UnMute",
+            "description": "UnMute",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "UnMute",
+              "description": "Standard UnMute endpoint",
+              "path": "/:address/volume/unmute"
+            },
+            "priority": 10
+          },
+          {
+            "_id": "STATUS_Input",
+            "description": "STATUS_Input",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "StatusInput",
+              "description": "returns current input state for devices with a single input",
+              "path": "/:address/input/current"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "HardwareInfo",
+            "description": "HardwareInfo",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "HardwareInfo",
+              "description": "Hardware information endpoint",
+              "path": "/:address/hardware"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "ActiveSignal",
+            "description": "ActiveSignal",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "ActiveSignal",
+              "description": "Active signal endpoint",
+              "path": "/:address/active/:port"
+            },
+            "priority": 20
+          },
+          {
+            "_id": "HealthCheck",
+            "description": "HealthCheck",
+            "microservice": {
+              "_id": "sony-control-microservice",
+              "description": "Used to control the Sony things",
+              "address": "http://localhost:8007"
+            },
+            "endpoint": {
+              "_id": "HealthCheck",
+              "description": "Hits the get input endpoint because if we can, we *should* be able to talk with it..",
+              "path": "/:address/power/status"
+            },
+            "priority": 20
+          }
+        ]
+    },
+    "HDMI": {
+        "_id": "non-controllable",
+        "description": "A Non-controllable Device",
+        "display_name": "HDMI",
+        "input": true,
+        "source": true,
+        "default-name": "HDMI",
+        "default-icon": "settings_input_hdmi",
+        "roles": [
+          {
+            "_id": "AudioIn",
+            "description": "Acts as an audio input device"
+          },
+          {
+            "_id": "VideoIn",
+            "description": "Acts as a video input device"
+          }
+        ]
+    }
+}

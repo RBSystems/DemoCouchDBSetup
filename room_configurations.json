@@ -1,0 +1,92 @@
+{
+    "default": {
+        "_id": "Default",
+        "evaluators": [
+          {
+            "_id": "PowerOnDefault",
+            "codekey": "PowerOnDefault",
+            "description": "PowerOnDefault",
+            "priority": 1
+          },
+          {
+            "_id": "StandbyDefault",
+            "codekey": "StandbyDefault",
+            "description": "StandbyDefault",
+            "priority": 9999
+          },
+          {
+            "_id": "ChangeAudioInputDefault",
+            "codekey": "ChangeAudioInputDefault",
+            "description": "ChangeAudioInputDefault",
+            "priority": 1337
+          },
+          {
+            "_id": "MuteDefault",
+            "codekey": "MuteDefault",
+            "description": "MuteDefault",
+            "priority": 5
+          },
+          {
+            "_id": "UnMuteDefault",
+            "codekey": "UnMuteDefault",
+            "description": "UnMuteDefault",
+            "priority": 6
+          },
+          {
+            "_id": "BlankDisplayDefault",
+            "codekey": "BlankDisplayDefault",
+            "description": "BlankDisplayDefault",
+            "priority": 7
+          },
+          {
+            "_id": "UnBlankDisplayDefault",
+            "codekey": "UnBlankDisplayDefault",
+            "description": "UnBlankDisplayDefault",
+            "priority": 8
+          },
+          {
+            "_id": "SetVolumeDefault",
+            "codekey": "SetVolumeDefault",
+            "description": "SetVolumeDefault",
+            "priority": 9
+          },
+          {
+            "_id": "ChangeVideoInputDefault",
+            "codekey": "ChangeVideoInputDefault",
+            "description": "ChangeVideoInputDefault",
+            "priority": 1338
+          },
+          {
+            "_id": "STATUS_PowerDefault",
+            "codekey": "STATUS_PowerDefault",
+            "description": "STATUS_PowerDefault",
+            "priority": 9999
+          },
+          {
+            "_id": "STATUS_BlankedDefault",
+            "codekey": "STATUS_BlankedDefault",
+            "description": "STATUS_BlankedDefault",
+            "priority": 9999
+          },
+          {
+            "_id": "STATUS_MutedDefault",
+            "codekey": "STATUS_MutedDefault",
+            "description": "STATUS_MutedDefault",
+            "priority": 9999
+          },
+          {
+            "_id": "STATUS_InputDefault",
+            "codekey": "STATUS_InputDefault",
+            "description": "STATUS_InputDefault",
+            "priority": 9999
+          },
+          {
+            "_id": "STATUS_VolumeDefault",
+            "codekey": "STATUS_VolumeDefault",
+            "description": "STATUS_VolumeDefault",
+            "priority": 9999
+          }
+        ],
+        "description": "Default"
+    }
+}
