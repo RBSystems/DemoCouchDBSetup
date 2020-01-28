@@ -1,6 +1,7 @@
 import requests
 import json
 import sys
+import base64
 
 db_names = ["devices", "device_type", "rooms", "buildings", "room_configurations"]
 devices_documents = ["pi3", "sonyXBR", "HDMI1", "HDMI2", "HDMI3"]
@@ -19,6 +20,16 @@ with open('buildings.json') as json_file:
     buildings_data = json.load(json_file)
 with open('room_configurations.json') as json_file:
     room_configurations_data = json.load(json_file)
+
+message = str(sys.argv[1]) + ":" + str(sys.argv[2])
+message_bytes = message.encode('ascii')
+base64_bytes = base64.b64encode(message_bytes)
+base64_message = base64_bytes.decode('ascii')
+
+headers = {
+        'Content-Type': "application/json",
+        'Authorization': "Basic "+base64_message,
+        }
 
 def setUpScript():
     # Check DB connection
@@ -86,11 +97,6 @@ def checkDBConnection():
 def createDB(dbName):
     url = "http://localhost:5984/{}".format(dbName)
 
-    headers = {
-        #If you have added authorization the following header is required. it is admin:{yourpassword} base64 encoded
-        'Authorization': "Basic YWRtaW46QllVQ09VR0FSUw==",
-        }
-
     response = requests.request("PUT", url, headers=headers)
     return response.status_code
 
@@ -100,13 +106,7 @@ def addDBDocument(dbname, document):
     import requests
 
     url = "http://localhost:5984/{}/{}".format(dbname, document["_id"])
-    print(url)
     payload = json.dumps(document)
-    headers = {
-        'Content-Type': "application/json",
-        #If you have added authorization the following header is required. it is admin:{yourpassword} base64 encoded
-        'Authorization': "Basic YWRtaW46QllVQ09VR0FSUw==",
-        }
 
     response = requests.request("PUT", url, data=payload, headers=headers)
 
