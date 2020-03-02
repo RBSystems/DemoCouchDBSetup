@@ -45,25 +45,25 @@
         ],
         "ports": [
           {
+            "_id": "hdmi!1",
+            "friendly_name": "SonyTv HDMI input 1",
+            "source_device": "DEMO-123-HDMI1",
+            "destination_device": "DEMO-123-D1",
+            "description": "SonyTv HDMI input 1"
+          },
+          {
             "_id": "hdmi!2",
             "friendly_name": "SonyTv HDMI input 2",
-            "source_device": "DEMO-123-HDMI1",
+            "source_device": "DEMO-123-HDMI2",
             "destination_device": "DEMO-123-D1",
             "description": "SonyTv HDMI input 2"
           },
           {
             "_id": "hdmi!3",
             "friendly_name": "SonyTv HDMI input 3",
-            "source_device": "DEMO-123-HDMI2",
-            "destination_device": "DEMO-123-D1",
-            "description": "SonyTv HDMI input 3"
-          },
-          {
-            "_id": "hdmi!4",
-            "friendly_name": "SonyTv HDMI input 4",
             "source_device": "DEMO-123-HDMI3",
             "destination_device": "DEMO-123-D1",
-            "description": "SonyTv HDMI input 4"
+            "description": "SonyTv HDMI input 3"
           }
         ]
       },
