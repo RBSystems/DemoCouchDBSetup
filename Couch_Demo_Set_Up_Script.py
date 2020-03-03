@@ -2,14 +2,46 @@ import requests
 import json
 import sys
 import base64
+import wget
 
-db_names = ["devices", "device_type", "rooms", "buildings", "room_configurations"]
+# The raw json files required for the DB
+devicesUrl = "https://raw.githubusercontent.com/byuoitav/DemoCouchDBSetup/master/devices.json"
+roomsUrl = "https://raw.githubusercontent.com/byuoitav/DemoCouchDBSetup/master/rooms.json"
+deviceTypesUrl = "https://raw.githubusercontent.com/byuoitav/DemoCouchDBSetup/master/device_type.json"
+buildingsUrl = "https://raw.githubusercontent.com/byuoitav/DemoCouchDBSetup/master/buildings.json"
+roomConfigurationUrl = "https://raw.githubusercontent.com/byuoitav/DemoCouchDBSetup/master/room_configurations.json"
+
+# used for loading up the DB
+db_names = ["devices", "device_types", "rooms", "buildings", "room_configurations"]
 devices_documents = ["pi3", "sonyXBR", "HDMI1", "HDMI2", "HDMI3"]
 rooms_documents = ["room"]
 device_type_documents = ["pi3", "sonyXBR", "HDMI"]
 buildings_documents = ["buildings"]
 room_configurations_documents = ["default"]
 
+# Check to see if the files are already downloaded, if they aren't download them using the URL's above
+try:
+    f = open("devices.json")
+except:
+    f = wget.download(devicesUrl)
+try:
+    f = open("rooms.json")
+except:
+    f = wget.download(roomsUrl)
+try:
+    f = open("device_type.json")
+except:
+    f = wget.download(deviceTypesUrl)
+try:
+    f = open("buildings.json")
+except:
+    f = wget.download(buildingsUrl)
+try:
+    f = open("room_configurations.json")
+except:
+    f = wget.download(roomConfigurationUrl)
+
+# Open the files and load the JSON
 with open('devices.json') as json_file:
     devices_data = json.load(json_file)
 with open('rooms.json') as json_file:
@@ -59,7 +91,7 @@ def setUpScript():
             sys.exit(1)
 
     for x in device_type_documents:
-        status = addDBDocument("device_type",device_type_data[x])
+        status = addDBDocument("device_types",device_type_data[x])
         if status != 201:
             print("failed to add {} to database".format(x))
             sys.exit(1)
