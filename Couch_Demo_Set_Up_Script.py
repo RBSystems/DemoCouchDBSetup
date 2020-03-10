@@ -2,7 +2,7 @@ import requests
 import json
 import sys
 import base64
-import wget
+import os
 
 # The raw json files required for the DB
 devicesUrl = "https://raw.githubusercontent.com/byuoitav/DemoCouchDBSetup/master/devices.json"
@@ -23,23 +23,23 @@ room_configurations_documents = ["default"]
 try:
     f = open("devices.json")
 except:
-    f = wget.download(devicesUrl)
+    os.system("wget " + devicesUrl)
 try:
     f = open("rooms.json")
 except:
-    f = wget.download(roomsUrl)
+    os.system("wget " + roomsUrl)
 try:
     f = open("device_type.json")
 except:
-    f = wget.download(deviceTypesUrl)
+    os.system("wget " + deviceTypesUrl)
 try:
     f = open("buildings.json")
 except:
-    f = wget.download(buildingsUrl)
+    os.system("wget " + buildingsUrl)
 try:
     f = open("room_configurations.json")
-except:
-    f = wget.download(roomConfigurationUrl)
+except:    
+    os.system("wget " + roomConfigurationUrl)
 
 # Open the files and load the JSON
 with open('devices.json') as json_file:
